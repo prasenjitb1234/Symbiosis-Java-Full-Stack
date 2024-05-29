@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            background: linear-gradient(45deg, #FFC107, #FF5722);
+            padding: 15px 30px;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 30px;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        a:hover {
+            background: linear-gradient(45deg, #FF5722, #FFC107);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+<body>
+
+<a th:href="@{/studentlist}">Student List</a>
+
+</body>
+</html>

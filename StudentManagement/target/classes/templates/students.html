@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        form {
+            display: inline-block;
+            margin: 0;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+<body>
+
+<table>
+		<thead>
+			<th>Id</th>
+			<th>Student Name</th>
+			<th>Age</th>
+			<th>Grade</th>
+		</thead>
+		<tbody>
+			<tr th:each="student: ${students}">
+				<td th:text="${student.id}">Id</td>
+				<td th:text="${student.name}">Student Name</td>
+				<td th:text="${student.age}">Age</td>
+				<td th:text="${student.grade}">Grade</td>
+				<td >
+				<form th:action="@{/student/delete}" method="POST">
+				<input type="hidden" name="id" th:value="${student.id}">
+				<button type="submit">Delete</button>
+				</form>
+				</td>
+				<td>
+				<form th:action="@{/student/edit}" method="GET">
+				<input type="hidden" name="id" th:value="${student.id}">
+				<button type="submit">Edit</button>
+				</form>
+				</td>
+				
+				
+		
+		</tbody>
+</table>
+
+
+
+</body>
+</html>
