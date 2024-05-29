@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        label {
+            color: #666;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: calc(100% - 20px);
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+<body>
+
+
+<form th:action="'/saveupdate'" th:object="${employee}" method="POST">
+<div>
+<input type="hidden" th:field="*{id}" name="id">
+<label for="name">Employee Name</label>
+<input type="text" placeholder="Enter your name" name="name" th:field="*{name}">
+<label for="position">Position</label>
+<input type="text" placeholder="Enter your position" name="position" th:field="*{position}">
+<label for="department">Department</label>
+<input type="text" placeholder="Enter your department" name="department" th:field="*{department}">
+<label for="contact">Contact</label>
+<input type="text" placeholder="Enter your contact" name="contact" th:field="*{contact}">
+<input type="hidden" th:field="*{username}" name="username">
+<br>
+<input type="hidden" th:field="*{password}" name="password">
+  
+<input type="submit" value="Update">
+</div>
+<a th:href="@{/employeelogin}">Login Here</a>
+
+</form>
+
+
+
+</body>
+</html>

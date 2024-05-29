@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        td {
+            background-color: #fff;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #c82333;
+        }
+    </style>
+<body>
+
+
+<table>
+		<thead>
+			<th>Id</th>
+			<th>Employee Name</th>
+			<th>Position</th>
+			<th>Department</th>
+			<th>contact</th>
+		</thead>
+		<tbody>
+			<tr th:each="employee: ${employees}">
+				<td th:text="${employee.id}">Id</td>
+				<td th:text="${employee.name}">Employee Name</td>
+				<td th:text="${employee.position}">Position</td>
+				<td th:text="${employee.department}">Department</td>
+				<td th:text="${employee.contact}">Contact</td>
+				<td >
+				<form th:action="@{/employee/delete}" method="POST">
+				<input type="hidden" name="id" th:value="${employee.id}">
+				<button type="submit">Delete</button>
+				</form>
+				</td>
+				<td>
+				<form th:action="@{/employee/edit}" method="GET">
+				<input type="hidden" name="id" th:value="${employee.id}">
+				<button type="submit">Edit</button>
+				</form>
+				</td>
+				
+				
+		
+		</tbody>
+</table>
+
+
+</body>
+</html>
